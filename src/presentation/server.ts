@@ -30,7 +30,7 @@ export class Server {
     this.app.use( express.static( this.publicPath ) );
 
 
-
+    //*Para las demas rutas de la SPA de react que usa react router dom como no existen en el servidor, express siemnpre va a servir la pagina index del dirtectorio public
     this.app.get('*', (req, res) => {
       const indexPath = path.join( __dirname + `../../../${ this.publicPath }/index.html` );
       res.sendFile(indexPath);
