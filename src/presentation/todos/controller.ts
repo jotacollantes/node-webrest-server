@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-const todos = [
+let todos = [
   { id: 1, text: 'Buy milk', completedAt: new Date() },
   { id: 2, text: 'Buy bread', completedAt: null },
   { id: 3, text: 'Buy butter', completedAt: new Date() },
@@ -52,10 +52,10 @@ export class TodosController {
 
     const { text, completedAt } = req.body;
     
-    todo.text = text || todo.text;
+    todo.text = text || todo.text; // Si viene text lo cambia sino lo deja como estaba
     ( completedAt === 'null' )
       ? todo.completedAt = null
-      : todo.completedAt = new Date( completedAt || todo.completedAt );
+      : todo.completedAt = new Date( completedAt || todo.completedAt ); //si viene completedAt de la req se usa ese caso contrario se usa el actual
     
 
     res.json( todo );
@@ -69,7 +69,8 @@ export class TodosController {
     const todo = todos.find(todo => todo.id === id );
     if ( !todo ) return res.status(404).json({ error: `Todo with id ${ id } not found` });
 
-    todos.splice( todos.indexOf(todo), 1 );
+    //* todos.splice( todos.indexOf(todo), 1 );
+    todos=todos.filter((todo)=>todo.id !== id)
     res.json( todo );
 
   }

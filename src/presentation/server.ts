@@ -28,8 +28,10 @@ export class Server {
     
 
     //* Middlewares
-    this.app.use( express.json() ); // raw
-    this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
+    //Para Parsear (serializar a JSON) los body que vienen en la request en formato raw json
+    this.app.use( express.json() );
+    // x-www-form-urlencoded
+    this.app.use( express.urlencoded({ extended: true }) ); 
 
     //* Public Folder
     this.app.use( express.static( this.publicPath ) );
