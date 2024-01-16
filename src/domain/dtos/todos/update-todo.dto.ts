@@ -7,7 +7,7 @@ export class UpdateTodoDto {
     public readonly text?: string,
     public readonly completedAt?: Date,
   ){}
-
+   //!Para enviar solo las propiedades que quiero actualizar
   get values() {
     const returnObj: {[key: string]: any} = {};
 
@@ -29,6 +29,7 @@ export class UpdateTodoDto {
 
     if ( completedAt ) {
       newCompletedAt = new Date( completedAt)
+      //console.log(newCompletedAt.toString())
       if ( newCompletedAt.toString() === 'Invalid Date' ) {
         return ['CompletedAt must be a valid date']
       }

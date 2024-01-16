@@ -28,7 +28,7 @@ export class TodosController {
   };
 
   public createTodo = async( req: Request, res: Response ) => {
-    
+    //!Llamamos al Dto
     const [error, createTodoDto] = CreateTodoDto.create(req.body);
     if ( error ) return res.status(400).json({ error });
 
@@ -53,6 +53,7 @@ export class TodosController {
 
     const updatedTodo = await prisma.todo.update({
       where: { id },
+      //data: {text, completedAt: (completedAt) ? new Date(completedAt):null}
       data: updateTodoDto!.values
     });
   
