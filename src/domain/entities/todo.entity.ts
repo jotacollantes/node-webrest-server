@@ -1,35 +1,29 @@
-
-
-
-
 export class TodoEntity {
-
   constructor(
     public id: number,
     public text: string,
-    public completedAt?: Date|null
+    public completedAt?: Date | null
   ) {}
 
   get isCompleted() {
     return !!this.completedAt;
   }
 
-  public static fromObject( object: {[key: string]: any} ): TodoEntity {
+  public static fromObject(object: { [key: string]: any }): TodoEntity {
     const { id, text, completedAt } = object;
-    if ( !id ) throw 'Id is required';
-    if ( !text ) throw 'text is required';
+    if (!id) throw "Id is required";
+    if (!text) throw "text is required";
 
     let newCompletedAt;
-    if ( completedAt ) {
+    if (completedAt) {
       newCompletedAt = new Date(completedAt);
-      if ( isNaN( newCompletedAt.getTime() ) ) {
-        throw 'CompletedAt is not a valid date'
+      //getTime() devuelve un numero 2145345435
+      if (isNaN(newCompletedAt.getTime())) {
+        throw "CompletedAt is not a valid date";
       }
     }
-
-    return new TodoEntity(id, text, completedAt)
+    
+    //!Retornamos una instancia del objetp TodoEntity
+    return new TodoEntity(id, text, completedAt);
   }
-
 }
-
-

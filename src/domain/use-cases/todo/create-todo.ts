@@ -2,7 +2,7 @@ import { CreateTodoDto } from '../../dtos';
 import { TodoEntity } from '../../entities/todo.entity';
 import { TodoRepository } from '../../repositories/todo.repository';
 
-
+//! Creamos la interfaz
 export interface CreateTodoUseCase {
   execute( dto: CreateTodoDto ): Promise<TodoEntity>
 }

@@ -7,11 +7,12 @@ import { CreateTodo, DeleteTodo, GetTodo, GetTodos, TodoRepository, UpdateTodo }
 export class TodosController {
 
   //* DI
+  //! en el constructor de la clase le inyecto el repository
   constructor(
     private readonly todoRepository: TodoRepository,
   ) { }
 
-
+//!Express no recomienda usar async/await
   public getTodos = ( req: Request, res: Response ) => {
 
     new GetTodos( this.todoRepository )

@@ -4,6 +4,7 @@ import { CreateTodoDto, TodoDatasource, TodoEntity, TodoRepository, UpdateTodoDt
 export class TodoRepositoryImpl implements TodoRepository {
 
   constructor(
+    //!Inyectamos la clase abstracta o la firma TodoDatasource
     private readonly datasource: TodoDatasource,
   ) { }
 

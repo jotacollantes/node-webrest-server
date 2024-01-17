@@ -7,12 +7,14 @@ import { TodoRepository } from '../../domain';
 export class TodosController {
 
   //* DI
+  //! en el constructor de la clase le inyecto el repository
   constructor(
     private readonly todoRepository: TodoRepository,
   ) { }
 
 
   public getTodos = async ( req: Request, res: Response ) => {
+    //!Se retorna TodoEntity[]
     const todos = await this.todoRepository.getAll();
     return res.json( todos );
   };
